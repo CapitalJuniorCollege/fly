@@ -5,8 +5,14 @@ Rails.application.routes.draw do
   root to: 'static_pages#welcome'
   devise_for :users, controllers: {
           sessions: 'users/sessions',
-          registrations: 'users/registrations',
           passwords: 'users/passwords'
+  }
+  devise_for :clients, skip: [:sessions], controllers: {
+          passwords: 'clients/passwords',
+          registrations: 'clients/registrations'
+  }
+  devise_for :admins, skip: [:sessions,  :registrations] ,controllers: {
+          passwords: 'admins/passwords'
   }
 
   resources :cities

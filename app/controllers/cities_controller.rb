@@ -1,4 +1,5 @@
 class CitiesController < ApplicationController
+  before_action :authenticate_client!
 
   def index
     @cities = City.all
