@@ -1,5 +1,5 @@
 class CitiesController < ApplicationController
-  before_action :authenticate_client!
+  before_action :authenticate_admin!
 
   def index
     @cities = City.all
@@ -19,13 +19,22 @@ class CitiesController < ApplicationController
 
   def create
     @city = City.new(city_params)
-    if @city.save
-      redirect_to cities_path
-    else
-      flash[:success] = "City created. Ok"
-      render 'new'
+    respond_to do |format|
+      if @city.save
+        format.html do
+          flash[:success] = "City created. Ok"
+          redirect_to cities_path
+        end
+        format.js
+      else
+        format.html do
+          render 'new'
+        end
+        format.js
+      end
     end
   end
+
 
   def destroy
     find_city

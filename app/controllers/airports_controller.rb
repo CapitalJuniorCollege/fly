@@ -13,6 +13,7 @@ class AirportsController < ApplicationController
 
   def new
     @airport = Airport.new
+    @city = City.new
     @cities = City.all
   end
 

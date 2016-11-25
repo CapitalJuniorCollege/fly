@@ -7,9 +7,16 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    binding.pry
+    aux = super do
+      binding.pry
+    end
+    binding.pry
+    sign_in(resource.type.underscore, resource.type.constantize.send(:find, resource.id)) unless resource.type.nil?
+    binding.pry
+    aux
+  end
 
   # DELETE /resource/sign_out
   # def destroy

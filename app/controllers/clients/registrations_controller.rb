@@ -8,11 +8,11 @@ class Clients::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-    aux = super
-    sign_in(User.name.underscore, User.name.constantize.send(:find, resource.id)) unless resource.type.nil?
-    aux
-  end
+  # def create
+  #   aux = super
+  #   sign_in(User.name.underscore, User.name.constantize.send(:find, resource.id)) unless resource.type.nil?
+  #   aux
+  # end
 
   # GET /resource/edit
   # def edit
