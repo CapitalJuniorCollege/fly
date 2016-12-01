@@ -17,10 +17,37 @@ Rails.application.routes.draw do
           passwords: 'admins/passwords'
   }
 
-  resources :cities 
+  resources :cities
   resources :airports
   resources :airlines
   resources :flights
+
+  get "/search_by_city" => 'flight_itineraries#search_by_city'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
